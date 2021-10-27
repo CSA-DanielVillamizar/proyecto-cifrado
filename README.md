@@ -1,34 +1,26 @@
-# Publick Key / Private Key Demo
-A web-based demonstration of public / private key pair concepts.
+Cifrado
+=======
 
-[![Blockchain 101 - Demo](https://img.youtube.com/vi/xIDL_akeras/0.jpg)](https://www.youtube.com/watch?v=xIDL_akeras)
+Proyecto de clase, cifrado con claves simetricas y asimetricas.
 
-This is a very basic visual introduction to the concepts behind a public / private key pair, signing and their use in a blockchain context.
+Proyecto usado para probar github.
 
-## Setup
-Get the code:
+Enunciado Original:
 
-```
-git clone https://github.com/anders94/public-private-key-demo.git
-```
+#### AES – RSA - DSA
 
-Install dependencies:
+Se desea programar un servicio de red de descarga de información con transferencia 
+segura. Necesitamos dos aplicaciones:
 
-```
-cd public-private-key-demo
-npm install
-```
-Run the server:
+* Un servidor seguro, que almacenará archivos de texto.
+* Un cliente seguro, que pedirá la descarga de archivos de texto.
 
-```
-./bin/www
-```
+El servidor almacenará una serie de archivos identificados por su nombre. Cuando el 
+cliente se conecte, indicará el nombre del archivo que quiere descargar y, si existe, el 
+servidor se los enviará. Los requisitos de seguridad son:
 
-Point a web browser at the demo:
-
-```
-http://localhost:3000
-```
-
-## Send Thanks
-Bitcoin greatfully accepted: `1K3NvcuZzVTueHW1qhkG2Cm3viRkh2EXJp`
+* La transferencia usará cifrado SIMETRICO AES. La clave de sesión la generará el cliente.
+* Con esta clave simétrica, el cliente se la enviará al servidor de forma segura 
+usando cifrado ASIMETRICO RSA, mediante un par de claves generadas en el servidor.
+* Una vez que tanto el servidor como el cliente conocen la clave simétrica de cifrado, se enviará el fichero solicitado desde el servidor firmado con DSA.
+* El cliente deberá verificar que el fichero recibido está correctamente firmado.
